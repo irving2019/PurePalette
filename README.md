@@ -1,3 +1,6 @@
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET%2010.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+
 Асинхронное WPF-приложение для независимой загрузки изображений из сети по URL. 
 Разработано в рамках тестового задания на позицию C# / WPF разработчика.
 
