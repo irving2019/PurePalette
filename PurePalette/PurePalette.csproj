@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\loader.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\loader.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\loader.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\loader.png" />
+  </ItemGroup>
+
+</Project>

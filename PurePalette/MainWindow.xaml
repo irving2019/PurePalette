@@ -1,0 +1,66 @@
+﻿<Window x:Class="PurePalette.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PurePalette"
+        xmlns:vm="clr-namespace:PurePalette.ViewModels"
+        mc:Ignorable="d"
+        Title="Pure Palette" Height="550" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Icon = "/Assets/loader.png">
+
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ItemsControl ItemsSource="{Binding ImageItems}" Grid.Row="0">
+
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" Columns="3" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="15,0,15,0">
+
+                        <Border BorderBrush="Gray" BorderThickness="1" Height="200" Margin="0,0,0,15">
+                            <Grid>
+                                <TextBlock Text="Ваша картинка" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontWeight="Bold"/>
+                                <Image Source="{Binding Image}" Stretch="Uniform" />
+                            </Grid>
+                        </Border>
+
+                        <TextBox Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}" 
+                                 Height="25" Margin="0,0,0,15" Padding="0,3,0,0"
+                                 HorizontalContentAlignment="Center"/>
+
+                        <Button Content="Запуск" Command="{Binding StartCommand}" 
+                                Height="30" Margin="0,0,0,10" Background="White"/>
+
+                        <Button Content="Прервать" Command="{Binding StopCommand}" 
+                                Height="30" Background="White"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Button Grid.Row="1" Content="Загрузить всё" Command="{Binding LoadAllCommand}" 
+                Height="30" Margin="15,20,15,10" Background="White"/>
+
+        <Grid Grid.Row="2" Margin="15,0,15,10">
+            <ProgressBar Minimum="0" Maximum="3" Value="{Binding ActiveDownloadsCount, Mode=OneWay}" Height="25"/>
+            <TextBlock Text="Загрузка" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+        </Grid>
+
+    </Grid>
+</Window>
